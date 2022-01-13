@@ -9,7 +9,10 @@
     "test": "node test",
     "start": "node main2.js",
     "knex": "node knex",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "db:migrate": "npx knex migrate:latest --knexfile db/knexfile.js",
+    "db:rollback": "npx knex migrate:rollback --knexfile db/knexfile.js",
+    "db:seed": "npx knex seed:run --knexfile db/knexfile.js"
   },
   "author": "",
   "license": "ISC",
