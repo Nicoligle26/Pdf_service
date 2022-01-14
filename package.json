@@ -21,6 +21,7 @@
     "dotenv": "^11.0.0",
     "express": "^4.17.2",
     "fastify": "^3.25.3",
+    "fastify-swagger": "^4.13.1",
     "knex": "^0.95.15",
     "objection": "^3.0.1",
     "pg": "^8.7.1"

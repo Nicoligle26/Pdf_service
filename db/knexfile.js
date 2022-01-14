@@ -16,7 +16,7 @@ const databaseConfiguration = {
   migrations: {
     tableName: 'knex_migrations',
     directory: path.resolve(__dirname, './migrations')
-  }, 
+  },
   seeds: {
     directory: path.resolve(__dirname, './seeds')
   }
