@@ -1,14 +1,41 @@
 'use strict';
 
-//const { errorHandler } = require('../../src/errors/handler.js');
-let Template = require('../models/template.js');
+const Template = require('../models/template.js');
+const { getTemplatesOpts, getTemplate } = require("../schemas/templates");
 
-const getTemplates = async (req, reply) => {
-    console.log(await Template.query());
+/**
+ * GET Template list endpoint
+ * @param  {object} req
+ * @param  {object} reply
+ */
+const index = async (req, reply) => {
     const templates = await Template.query()
-    reply.send(await Template.query().toJson);
+    reply.send(templates);
 }
 
-module.exports = {
-    getTemplates
+/**
+ * GET Template details endpoint
+ * @param  {object} req
+ * @param  {Object} reply
+ */
+async function show(req, reply) {
+    const template = await Template.query().findById(req.params.id).throwIfNotFound();
+    reply.send(template);
 }
+
+
+module.exports = async fastify => {
+    fastify.route({
+        method: 'GET',
+        url: '/',
+        schema: getTemplatesOpts,
+        handler: index
+    });
+
+    fastify.route({
+        method: 'GET',
+        url: '/:id',
+        schema: getTemplate,
+        handler: show
+    });
+};

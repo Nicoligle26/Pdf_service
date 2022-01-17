@@ -2,17 +2,18 @@
   "name": "carbone",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.js",
+  "main": "./server.js",
   "scripts": {
     "env-linux": "export $(cat .env | xargs) && env",
     "start-linux": "export $(cat .env | xargs) && npm start",
-    "test": "node test",
+    "test": "ENV_FILE=.env.test jest --runInBand --detectOpenHandles --forceExit",
+    "test:unit": "ENV_FILE=.env.test jest",
     "start": "node main2.js",
     "knex": "node knex",
-    "dev": "nodemon ./src/server.js",
-    "db:migrate": "npx knex migrate:latest --knexfile db/knexfile.js",
-    "db:rollback": "npx knex migrate:rollback --knexfile db/knexfile.js",
-    "db:seed": "npx knex seed:run --knexfile db/knexfile.js"
+    "dev": "nodemon ./server.js",
+    "db:migrate": "npx knex migrate:latest",
+    "db:rollback": "npx knex migrate:rollback",
+    "db:seed": "npx knex seed:run"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,9 @@
   },
   "devDependencies": {
     "jest": "^27.4.7",
-    "nodemon": "^2.0.15"
+    "jest-environment-node": "^27.4.6",
+    "knex-cleaner": "^1.3.1",
+    "nodemon": "^2.0.15",
+    "rosie": "^2.1.0"
   }
 }

@@ -1,8 +1,8 @@
 'use strict';
 
-exports.seed = function (knex) {
-  // Inserts seed entries
-  return knex('projects').insert([{
+exports.seed = async function (knex) {
+  // Create projects
+  await knex('projects').insert([{
     id: 1,
     name: 'yocargo'
   }, {
@@ -15,11 +15,9 @@ exports.seed = function (knex) {
     id: 4,
     name: 'pospery'
   }])
-};
 
-exports.seed = function (knex) {
-  // Inserts seed entries
-  return knex('templates').insert([{
+  // Create templates
+  await knex('templates').insert([{
     id: 1,
     name: 'extracto',
     project_id: 1
@@ -36,11 +34,9 @@ exports.seed = function (knex) {
     name: 'factura2',
     project_id: 4
   }])
-};
 
-exports.seed = function (knex) {
-  // Inserts seed entries
-  return knex('keys').insert([{
+  // Create projects keys
+  await knex('keys').insert([{
     id: 1,
     key_project: 1
   }, {

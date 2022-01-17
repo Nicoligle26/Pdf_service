@@ -1,30 +1,15 @@
-const { getTemplates } = require('./controllers/templates_controller.js');
+const templateController = require('./controllers/templates_controller.js');
+const { errorHandler } = require('../errors/handler');
 
-const Template = {
-    type: 'object',
-    properties: {
-        id: { type: 'integer' },
-        name: { type: 'string' },
-        project_id: { type: 'integer' }
-    },
-}
-
-const getTemplatesOpts = {
-    schema: {
-        response: {
-            200: {
-                type: 'array',
-                templates: Template,
-            },
-        },
-    },
-    handler: getTemplates,
-}
-
+/**
+ * @param  {} fastify
+ * @param  {} options
+ * @param  {} done
+ */
 function templateRoutes(fastify, options, done) {
-    fastify.get('/templates', getTemplatesOpts)
-
-    done()
+    fastify.setErrorHandler(errorHandler);
+    fastify.register(templateController, { prefix: '/v1/templates' })
+    done();
 }
 
 module.exports = templateRoutes

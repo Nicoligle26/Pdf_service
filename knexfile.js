@@ -1,11 +1,10 @@
 'use strict';
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: `.env${process.env.NODE_ENV && `.${process.env.NODE_ENV}`}` });
 
 const path = require('path');
 // Update with your config settings.
-
 const databaseConfiguration = {
-  client: 'pg',
+  client: 'postgresql',
   connection: {
     host: process.env.HOST,
     port: process.env.PORT_DB,
@@ -15,10 +14,10 @@ const databaseConfiguration = {
   },
   migrations: {
     tableName: 'knex_migrations',
-    directory: path.resolve(__dirname, './migrations')
+    directory: path.resolve(__dirname, './db/migrations')
   },
   seeds: {
-    directory: path.resolve(__dirname, './seeds')
+    directory: path.resolve(__dirname, './db/seeds')
   }
 };
 

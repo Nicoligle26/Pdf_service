@@ -10,8 +10,27 @@ function validationErrorMessage(error, context) {
             : '';
     return `${paddedPrefix}${message}${allowedValues}`;
 }
+const REQUEST_NOT_FOUND_ERROR = 'REQUEST_VALIDATION_ERROR';
+const notFoundResponse = (error, request, reply) => {
+    const body = {
+        errors: [{
+            code: REQUEST_NOT_FOUND_ERROR,
+            message: error.message
+        }]
+    };
+    reply.code(404);
+    reply.type('application/json');
+    reply.send(body);
+}
+
+const errorFunctions = {
+    NotFoundError: notFoundResponse
+}
 
 const errorHandler = (error, request, reply) => {
+    const func = errorFunctions[error.name];
+    if (func)
+        func(error, request, reply);
     if (Array.isArray(error.validation)) {
         const body = {
             errors: error.validation.map(err => ({
