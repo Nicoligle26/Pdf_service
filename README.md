@@ -39,13 +39,13 @@ dropdb (name database)
 ## Run migrations in console
 
 ```sh
-nmp run db:migrate
+npm run db:migrate
 ```
 
 ## Run seeds
 
 ```sh
-nmp run db:seed
+npm run db:seed
 ```
 
 ## Usage
