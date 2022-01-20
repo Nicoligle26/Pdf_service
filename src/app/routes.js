@@ -1,4 +1,4 @@
-const templateController = require('./controllers/templates_controller.js');
+const templateController = require('./controllers/templates_controller');
 const { errorHandler } = require('../errors/handler');
 
 /**
@@ -6,10 +6,10 @@ const { errorHandler } = require('../errors/handler');
  * @param  {} options
  * @param  {} done
  */
-function templateRoutes(fastify, options, done) {
-    fastify.setErrorHandler(errorHandler);
-    fastify.register(templateController, { prefix: '/v1/templates' })
-    done();
+function templateRoutes(fastify, _options, done) {
+  fastify.setErrorHandler(errorHandler);
+  fastify.register(templateController, { prefix: '/v1/templates' });
+  done();
 }
 
-module.exports = templateRoutes
+module.exports = templateRoutes;

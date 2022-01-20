@@ -60,6 +60,12 @@ npm run dev
 npm run test
 ```
 
+## Run & Fix Lint warning
+
+```sh
+npm run lint:fix
+```
+
 ## Author
 
 👤 **Nicolle Iglesias Covo**
