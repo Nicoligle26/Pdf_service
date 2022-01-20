@@ -1,17 +1,15 @@
-'use strict';
-
-const Template = require('../models/template.js');
-const { getTemplatesOpts, getTemplate } = require("../schemas/templates");
+const Template = require('../models/template');
+const { getTemplatesOpts, getTemplate } = require('../schemas/templates');
 
 /**
  * GET Template list endpoint
  * @param  {object} req
  * @param  {object} reply
  */
-const index = async (req, reply) => {
-    const templates = await Template.query()
-    reply.send(templates);
-}
+const index = async (_req, reply) => {
+  const templates = await Template.query();
+  reply.send(templates);
+};
 
 /**
  * GET Template details endpoint
@@ -19,23 +17,24 @@ const index = async (req, reply) => {
  * @param  {Object} reply
  */
 async function show(req, reply) {
-    const template = await Template.query().findById(req.params.id).throwIfNotFound();
-    reply.send(template);
+  const template = await Template.query()
+    .findById(req.params.id)
+    .throwIfNotFound();
+  reply.send(template);
 }
 
+module.exports = async (fastify) => {
+  fastify.route({
+    method: 'GET',
+    url: '/',
+    schema: getTemplatesOpts,
+    handler: index,
+  });
 
-module.exports = async fastify => {
-    fastify.route({
-        method: 'GET',
-        url: '/',
-        schema: getTemplatesOpts,
-        handler: index
-    });
-
-    fastify.route({
-        method: 'GET',
-        url: '/:id',
-        schema: getTemplate,
-        handler: show
-    });
+  fastify.route({
+    method: 'GET',
+    url: '/:id',
+    schema: getTemplate,
+    handler: show,
+  });
 };
