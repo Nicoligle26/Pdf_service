@@ -14,7 +14,7 @@
     "db:migrate": "npx knex migrate:latest",
     "db:rollback": "npx knex migrate:rollback",
     "db:seed": "npx knex seed:run",
-    "lint:fix": "eslint src --fix --cache"
+    "lint:fix": "eslint . --fix --cache"
   },
   "author": "",
   "license": "ISC",
