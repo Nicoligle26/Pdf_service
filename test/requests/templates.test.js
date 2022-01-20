@@ -26,7 +26,7 @@ describe("TemplateController", () => {
     })
 
     describe('GET /templates/1', () => {
-        it('returns 200 status', async () => {
+        it('returns a valid result', async () => {
             const response = await fastify.inject({
                 method: 'GET',
                 url: '/v1/templates/1'
@@ -39,5 +39,17 @@ describe("TemplateController", () => {
             expect(payload).toHaveProperty("project_id")
             expect(payload.project_id).toEqual(template.project_id)
         })
+
+        // it('returns a invalid result', async () => {
+        //     const response = await fastify.inject({
+        //         method: 'GET',
+        //         url: '/v1/templates/0'
+        //     })
+
+        //     const payload = response.json()
+        //     expect(response.statusCode).toEqual(404)
+        //     expect(payload).toHaveProperty("project_id")
+        //     expect(payload.project_id).toEqual(template.project_id)
+        // })
     })
 })
