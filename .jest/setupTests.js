@@ -4,7 +4,7 @@ const Model = require('objection').Model;
 const Factory = require('rosie').Factory
 
 Model.knex(knex);
-
+global.context = describe;
 global.beforeEach(async () => {
     global.Factory = Factory;
     await knexCleaner.clean(knex);
