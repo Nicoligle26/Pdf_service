@@ -45,11 +45,19 @@ class Project extends Model {
       templates: {
         relation: Model.HasManyRelation,
         modelClass: Template,
+        join: {
+          from: 'projects.id',
+          to: 'templates.project_id',
+        },
       },
 
       keys: {
         relation: Model.HasOneRelation,
         modelClass: Key,
+        join: {
+          from: 'projects.id',
+          to: 'keys.key_project',
+        },
       },
     };
   }

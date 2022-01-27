@@ -10,6 +10,7 @@ module.exports = {
     Factory: true,
     fastify: true,
     context: true,
+    xcontext: true,
     insertClass: true,
   },
   extends: ['airbnb-base', 'eslint:recommended', 'plugin:prettier/recommended'],
