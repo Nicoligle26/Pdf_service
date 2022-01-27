@@ -41,6 +41,10 @@ class Template extends Model {
       projects: {
         relation: Model.BelongsToOneRelation,
         modelClass: Project,
+        join: {
+          from: 'projects.project_id',
+          to: 'projects.id',
+        },
       },
     };
   }

@@ -23,7 +23,7 @@ class Key extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['key_project_id'],
+      required: ['key_project'],
 
       properties: {
         id: { type: 'integer' },
@@ -40,6 +40,10 @@ class Key extends Model {
       projects: {
         relation: Model.BelongsToOneRelation,
         modelClass: Project,
+        join: {
+          from: 'projects.key_project',
+          to: 'projects.id',
+        },
       },
     };
   }
