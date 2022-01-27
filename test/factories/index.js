@@ -1,2 +1,2 @@
-require('./templates')
-require('./projects')
+require('./templates');
+require('./projects');
