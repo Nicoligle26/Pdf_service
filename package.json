@@ -8,7 +8,7 @@
     "start-linux": "export $(cat .env | xargs) && npm start",
     "test": "ENV_FILE=.env.test jest --runInBand --detectOpenHandles --forceExit",
     "test:unit": "ENV_FILE=.env.test jest",
-    "start": "node main2.js",
+    "start": "node prueba.js",
     "knex": "node knex",
     "dev": "nodemon ./server.js",
     "db:migrate": "npx knex migrate:latest",
@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1064.0",
     "carbone": "^3.2.3",
     "dotenv": "^11.0.0",
     "eslint-config-prettier": "^8.3.0",
@@ -29,7 +30,8 @@
     "knex": "^0.95.15",
     "objection": "^3.0.1",
     "pg": "^8.7.1",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^8.7.0",
