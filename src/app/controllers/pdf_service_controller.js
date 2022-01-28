@@ -1,6 +1,7 @@
 const tmp = require('tmp-promise');
 const AWS = require('aws-sdk');
 const carbone = require('carbone');
+const fs = require('fs').promises;
 
 const { getTemplate } = require('../schemas/templates');
 
@@ -50,7 +51,8 @@ async function create(_req, reply) {
   };
 
   try {
-    s3.getObject(params).createReadStream();
+    const readStream = s3.getObject(params).createReadStream();
+    await fs.writeFile(t.path, readStream, { flag: 'w+' });
 
     carbone.render(t.path, data, options, function callback(_err, result) {
       reply
