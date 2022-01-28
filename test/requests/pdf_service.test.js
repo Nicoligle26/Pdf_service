@@ -61,7 +61,7 @@ describe('PdfService', () => {
         const callback = async () => {
           await pdfService.generate(templateId, data, callback);
         };
-        
+
         // eslint-disable-next-line
         expect(callback()).rejects.toThrow(NotFoundError);
       });
