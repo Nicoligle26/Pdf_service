@@ -3,6 +3,7 @@ const AWS = require('aws-sdk');
 const carbone = require('carbone');
 const fs = require('fs').promises;
 
+// const PdfService = require('../services/pdf_service');
 const { getTemplate } = require('../schemas/templates');
 
 async function create(_req, reply) {

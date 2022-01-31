@@ -23,6 +23,12 @@ async function show(req, reply) {
   reply.send(template);
 }
 
+async function create(req, reply) {
+  const template = req.body;
+  const newTemplate = await Template.query().insert(template);
+  reply.code(201).send(newTemplate);
+}
+
 module.exports = async (fastify) => {
   fastify.route({
     method: 'GET',
@@ -36,5 +42,12 @@ module.exports = async (fastify) => {
     url: '/:id',
     schema: getTemplate,
     handler: show,
+  });
+
+  fastify.route({
+    method: 'POST',
+    url: '/',
+    schema: getTemplate,
+    handler: create,
   });
 };
