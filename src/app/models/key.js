@@ -1,20 +1,5 @@
 const { Model } = require('objection');
 
-/**
- * CREATE model of key
- * @param  {} {return'keys';}staticgetjsonSchema(
- * @param  {'object'} {return{type
- * @param  {['key_project_id']} required
- * @param  {{id:{type:'integer'}} properties
- * @param  {{type:'timestamp'}} created_at
- * @param  {{type:'timestamp'}} updated_at
- * @param  {} }
- * @param  {} }}staticgetrelationMappings(
- * @param  {} {constProject=require('./project'
- * @param  {{relation:Model.BelongsToOneRelation} ;return{projects
- * @param  {Project}}}}} modelClass
- * @returns Project
- */
 class Key extends Model {
   static get tableName() {
     return 'keys';

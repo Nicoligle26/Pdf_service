@@ -10,7 +10,8 @@ async function _getProjectById(id) {
   return await Project.query().findById(id).throwIfNotFound();
 }
 
-async function generate(templateId, data, callback) {
+async function generate(templateId, data, options, callback) {
+  console.log('ENTRE PDFSERVICE')
   const project = await _getProjectById(this.projectId);
   await project
     .$relatedQuery('templates')
@@ -19,7 +20,7 @@ async function generate(templateId, data, callback) {
 
   const templateService = new TemplateService();
   const template = templateService.getTemplate(this.projectId, templateId);
-  carbone.render(template.path, data, callback);
+  carbone.render(template.path, data, options, callback);
 }
 
 PdfService.prototype.generate = generate;

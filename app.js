@@ -11,6 +11,7 @@ const initObjection = (knexClient) => {
 async function build(opts = {}) {
   const fastify = require('fastify')({ logger: true, ...opts });
 
+  fastify.register(require('fastify-multipart'));
   fastify.register(require('fastify-swagger'), {
     exposeRoutes: true,
     routePrefix: '/docs',

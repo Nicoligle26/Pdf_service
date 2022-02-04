@@ -28,13 +28,13 @@ describe('TemplateController', () => {
     it('returns 200 status', async () => {
       const response = await fastify.inject({
         method: 'GET',
-        url: '/v1/templates/1',
+        url: '/v1/template/1',
       });
 
       const payload = response.json();
-      expect(response.statusCode).toEqual(200);
       expect(payload.id).toBeDefined();
       expect(payload.id).toEqual(template.id);
+      expect(response.statusCode).toEqual(200);
       expect(payload).toHaveProperty('project_id');
       expect(payload.project_id).toEqual(template.project_id);
     });
