@@ -1,28 +1,27 @@
-const TemplateSchema = {
+const ProjectSchema = {
   type: 'object',
   properties: {
     id: { type: 'integer' },
     name: { type: 'string' },
-    project_id: { type: 'integer' },
   },
 };
 
-const getTemplatesOpts = {
+const getProjectsOpts = {
   response: {
     200: {
       type: 'array',
-      templates: TemplateSchema,
+      projects: ProjectSchema,
     },
   },
 };
 
-const getTemplate = {
+const getProject = {
   response: {
-    200: TemplateSchema,
+    200: ProjectSchema,
   },
 };
 
 module.exports = {
-  getTemplatesOpts,
-  getTemplate,
+  getProjectsOpts,
+  getProject,
 };
