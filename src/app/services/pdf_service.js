@@ -11,7 +11,7 @@ async function _getProjectById(id) {
 }
 
 async function generate(templateId, data, options, callback) {
-  console.log('ENTRE PDFSERVICE')
+  console.log('ENTRE PDF SERVICE')
   const project = await _getProjectById(this.projectId);
   await project
     .$relatedQuery('templates')
